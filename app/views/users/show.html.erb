@@ -1,0 +1,60 @@
+<main class="container">
+<p id="notice"><%= notice %></p>
+
+<div class="card" style"width: 18rem;">
+  <img class="card-img-top" src="<%= image_tag @user.avatar %> alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"> <%= @user.email %> </h5>
+    <p class="card-text"> 
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @user.description %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<%if @user.avatar.attached?%>
+  <%= image_tag @user.avatar, alt: 'avatar' %>
+<%else%>
+  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+<%end%>
+
+<%= link_to 'Edit profil', edit_user_registration_path, class:"btn btn-success" %> |
+<%= link_to 'Home', root_path, class:"btn btn-primary" %>
+
+<% Event.all.each do |event| %>
+  <% if @user.id == event.admin.id %>
+    <div class="card my-3">
+      <div class="card-header">
+        <h4><%= event.title %></h4>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">le <%= event.start_date %> à <%= event.location %></h5>
+        <p class="card-text"><%= event.description %></p>
+        <%= link_to 'Show', event, class:"btn btn-primary" %> 
+        <% if user_signed_in? && current_user.id == event.admin.id %>
+          <%= link_to 'Edit', edit_event_path(event), class:"btn btn-warning" %> 
+          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+        <% end %>
+      </div>
+      <div class="card-footer">
+        Prix : <%= event.price %> € // Durée : <%= event.duration %> min
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+</main>

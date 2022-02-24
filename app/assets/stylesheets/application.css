@@ -1,0 +1,30 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+  */
+
+.card-home:hover {
+  box-shadow: 19px 19px 32px 9px rgba(0,0,0,0.44);
+  transform:translateY(-10px) scale(1.1)
+}
+
+.card-home {
+  border-radius:15px;
+  transition:0.15s ease-in-out;
+}
+body {
+  color : rgb(231, 140, 140);
+  background-image: url('https://media.istockphoto.com/photos/yellow-background-picture-id1032083272?k=20&m=1032083272&s=612x612&w=0&h=6pVCHU1V0Ld82TX9M2cV-YdipM7cmXdJA_gNr1SqQio=');
+  height: 100%; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
